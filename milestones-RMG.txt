@@ -1,5 +1,14 @@
 Challenge05 - Ryan Grychowski 
 
+-----Link to GitHub Repository-----
+
+https://github.com/roanmorgan53/Clear-The-Keep
+
+
+-----Project Summary-----
+
+Insert summary here
+
 -----Project Rubric-----
 
 1. Project Concept and Creativity (5 points)
