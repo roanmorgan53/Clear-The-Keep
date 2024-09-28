@@ -1,0 +1,43 @@
+Challenge05 - Ryan Grychowski 
+
+-----Project Rubric-----
+
+1. Project Concept and Creativity (5 points)
+
+	5 points: Unique project idea that creatively uses data structures in a meaningful way. 
+	3 points: Average level project with straightforward approach.
+	1 point: Takes the easy way out.
+
+2. Use of Data Structures (10 points)
+
+	10 points: Uses a data structure taught in class effectively and applies it to solve a major issue
+	5 points:  Application of data structure is not optimal
+	3 points: Very basic use and misunderstanding of data structure
+
+3. Team Collaboration and Contribution (5 points)
+	
+	5 points: All team members contributed equally and worked well together. Clear that there was a team wide effort
+	3 points: Some members contributed much more than others
+	1 point: Little evidence of teamwork
+
+4. Code Quality and Documentation (10 points)
+
+	10 points: Code is clean and well-organized. Easy to follow
+	5 points: Code works but is hard to folow
+	1 point: Unreadable and poorly structured code
+
+5. Project Completeness and Functionality (10 points)
+	
+	10 points: Project works as intended and meets the inital goals
+	5 points: Functional but lacks certain features
+	1 point: Project does not work and is incomplete
+
+-----Time Table-----
+
+9/26 - 2 hour(s) - Spent researching disjoint structures and how to create a random maze generator.
+9/28 - 1 hour(s) - Spent studying godot.
+
+
+
+-----Compliable Task-----
+
