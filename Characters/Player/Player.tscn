@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bamb0wb4skvmp"]
 
-[ext_resource type="Script" path="res://Characters/character.gd" id="1_djyjo"]
+[ext_resource type="Script" path="res://Characters/Player/Player.gd" id="1_r1m8k"]
 [ext_resource type="Texture2D" uid="uid://b54hm44jxe5jv" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_qlqfi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uuu7l"]
@@ -71,7 +71,7 @@ animations = [{
 size = Vector2(20, 25)
 
 [node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_djyjo")
+script = ExtResource("1_r1m8k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 

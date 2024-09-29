@@ -1,0 +1,14 @@
+Challenge 05 - Roan Morgan
+
+-- Time Log --
+
+9/27 - 3 hours - Learning about Godot basics, setting up github repository, making basic scene
+9/29 - 2 hours - Watching godot tutorial videos, and preparing for development of a movable character
+
+-- Project Rubric --
+
+A: Playable game with multiple rooms, weapons, and a final boss
+B: Game is still playable but with little to no variation in weapons and playstyles
+C: Game does not quite run correctly, and is not very fun to play
+D: Runs, but unplayable
+F: Game doesn't run
