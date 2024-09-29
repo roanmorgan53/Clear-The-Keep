@@ -12,3 +12,7 @@ B: Game is still playable but with little to no variation in weapons and playsty
 C: Game does not quite run correctly, and is not very fun to play
 D: Runs, but unplayable
 F: Game doesn't run
+
+-- Short Report --
+
+This challenge pushed me to get my feet wet with everything that godot has to offer, and has gotten me excited for what this project can become with a little time and effort. 
