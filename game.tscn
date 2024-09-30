@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=4 uid="uid://bxlc4svho8mnf"]
 
-[ext_resource type="Script" path="res://Characters/character.gd" id="1_e4clg"]
 [ext_resource type="Texture2D" uid="uid://b54hm44jxe5jv" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="1_md75b"]
+[ext_resource type="Script" path="res://Characters/Player/Player.gd" id="2_et2b1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j7adp"]
 texture = ExtResource("1_md75b")
@@ -717,7 +717,7 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAUAAAAAAAEAAAACAAUAAAAAAAIAAAACAAU
 tile_set = SubResource("TileSet_4nh3g")
 
 [node name="Character" type="CharacterBody2D" parent="."]
-script = ExtResource("1_e4clg")
+script = ExtResource("2_et2b1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
 position = Vector2(134, 65)
