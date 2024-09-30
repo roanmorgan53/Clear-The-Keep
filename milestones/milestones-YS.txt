@@ -1,0 +1,47 @@
+Challenge 05 - Yves Song
+
+Github: https://github.com/roanmorgan53/Clear-The-Keep
+
+Project Description 
+
+Clear The Keep: 2D Rogue-like RPG where the player is met with an influx of enemies he has to defeat in order to take back his dwarven keep. Developed in Godot with randomized room mechanics and varying weapons and items.
+
+Project Rubric (so far)
+Gameplay and Mechanics (10 points):
+--Full points: Smooth gameplay with multiple rooms, enemies, weapons, and a boss.
+--Mid-range: Basic mechanics with limited variation.
+--Low: Core features missing or broken.
+
+Design and Aesthetics (5 points):
+--Full points: Well-designed visuals, sound, and animations.
+--Mid-range: Decent but inconsistent design.
+--Low: Poor or missing design elements.
+
+Creativity and Innovation (5 points):
+--Full points: Unique and creative game elements.
+--Mid-range: Some creativity, but underdeveloped.
+--Low: Follows standard RPG formulas.
+
+Code Quality and Structure (5 points):
+--Full points: Clean, well-documented, organized code.
+--Mid-range: Functional but disorganized or under-documented.
+--Low: Messy or broken code.
+
+Completion and Polish (5 points):
+--Full points: Fully complete and tested.
+--Mid-range: Minor bugs or missing features.
+--Low: Unfinished or buggy.
+
+
+Time Log:
+
+Date & Time
+9/28 2.5 Hours
+
+Description:
+Researching GoDot framework and we can leverage it for project/game use
+
+Report:
+So far, I’ve taken advantage of learning something new with the GoDot framework. 
+It’s been interesting researching and discussing with my groupmates about the ideas that we’ll be using and the roles each of us have. 
+Moving forward, I will integrate dedicated time towards the coding aspect, but for now I’ve been researching the principles of GoDot. 
