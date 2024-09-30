@@ -1,5 +1,9 @@
 Challenge 05 - Roan Morgan
 
+-- Project Description --
+
+Clear The Keep: 2D Rogue-like RPG where the player is met with an influx of enemies he has to defeat in order to take back his dwarven keep. Developed in Godot with randomized room mechanics and varying weapons and items.
+
 -- Time Log --
 
 9/27 - 3 hours - Learning about Godot basics, setting up github repository, making basic scene
