@@ -4,10 +4,11 @@ Challenge05 - Ryan Grychowski
 
 https://github.com/roanmorgan53/Clear-The-Keep
 
-
 -----Project Summary-----
 
-Insert summary here
+For our project, we plan to use the godot engine to create a 2D dungeon game where we implement 
+disjoint sets to create a randomized maze filled with enemies that you can battle with the goal 
+to be to reach the end of the maze successfully. 
 
 -----Project Rubric-----
 
@@ -32,21 +33,23 @@ Insert summary here
 4. Code Quality and Documentation (10 points)
 
 	10 points: Code is clean and well-organized. Easy to follow
-	5 points: Code works but is hard to folow
+	5 points: Code works but is hard to follow
 	1 point: Unreadable and poorly structured code
 
 5. Project Completeness and Functionality (10 points)
 	
-	10 points: Project works as intended and meets the inital goals
+	10 points: Project works as intended and meets the initial goals
 	5 points: Functional but lacks certain features
 	1 point: Project does not work and is incomplete
 
 -----Time Table-----
 
-9/26 - 2 hour(s) - Spent researching disjoint structures and how to create a random maze generator.
+9/26 - 2 hour(s) - Spent researching disjoint set structures and how to create a random maze generator.
 9/28 - 1 hour(s) - Spent studying godot.
-
-
+9/29 - 2 hour(s) - Spent researching and brainstorming ways to implement disjoint set structures into godot
+9/30 - 1 hour(s) - In lab starting to write bits and pieces into godot and get my feet wet.
 
 -----Compliable Task-----
 
+My compliable task is to find a way to use disjoint sets to randomize maze generation and create the map for 
+our player to exist within. 
