@@ -1,22 +1,20 @@
 extends CharacterBody2D
 class_name Character
 
-const FRICTION: float = 0.15
+# script to animate the character with the given set of images
+@onready var _animated_sprite = $AnimatedSprite2D
+func _process(_delta):
+	if Input.is_action_pressed("left") or Input.is_action_pressed("right") or Input.is_action_pressed("up") or Input.is_action_pressed("down"):
+		_animated_sprite.play("default")
+	else:
+		_animated_sprite.stop()
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+@export var speed = 100
 
-var acceleration = 40
-var max_speed = 100
+func get_input():
+	var input_direction = Input.get_vector("left", "right","up", "down")
+	velocity = input_direction * speed
 
-var mov_direction: Vector2 = Vector2.ZERO
-var velocity1: Vector2 = Vector2.ZERO
-
-func _physics_process(delta: float) -> void:
-	velocity1 = lerp(velocity1, Vector2.ZERO, FRICTION)
+func _physics_process(delta):
+	get_input()
 	move_and_slide()
-
-func move() -> void:
-	mov_direction = mov_direction.normalized()
-	velocity += mov_direction * acceleration
-	
