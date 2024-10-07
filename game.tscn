@@ -723,7 +723,7 @@ script = ExtResource("2_et2b1")
 position = Vector2(134, 65)
 sprite_frames = SubResource("SpriteFrames_yntaa")
 animation = &"run"
-frame_progress = 0.363056
+frame_progress = 0.011744
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Character"]
 root_node = NodePath("../AnimatedSprite2D")
