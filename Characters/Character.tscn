@@ -1,106 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://bdkelqkm44eh3"]
+[gd_scene load_steps=3 format=3 uid="uid://mcmaylbuw84i"]
 
-[ext_resource type="Script" path="res://Characters/character.gd" id="1_5aom1"]
-[ext_resource type="Texture2D" uid="uid://b54hm44jxe5jv" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_b70nq"]
+[ext_resource type="Script" path="res://Characters/Character.gd" id="1_lyh71"]
+[ext_resource type="Script" path="res://Characters/FSM.gd" id="2_0s5h7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tahtg"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(128, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cao0b"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(144, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wfpwi"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(160, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_tl2t5"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(176, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1x4fm"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(192, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ef7ya"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(208, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_30s87"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(224, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w8dv2"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(240, 198, 16, 33)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_txuqm"]
-atlas = ExtResource("2_b70nq")
-region = Rect2(256, 198, 16, 33)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_4y7f3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tahtg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cao0b")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wfpwi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tl2t5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1x4fm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ef7ya")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_30s87")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w8dv2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_txuqm")
-}],
-"loop": true,
-"name": &"Move",
-"speed": 10.0
-}]
-
-[sub_resource type="Animation" id="Animation_vhw5o"]
-resource_name = "Move"
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tw8cj"]
-_data = {
-"Move": SubResource("Animation_vhw5o")
-}
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_abmso"]
-size = Vector2(20, 21.9987)
-
-[node name="Player" type="CharacterBody2D"]
-script = ExtResource("1_5aom1")
+[node name="Character" type="CharacterBody2D"]
+script = ExtResource("1_lyh71")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(199, 114)
-sprite_frames = SubResource("SpriteFrames_4y7f3")
-animation = &"Move"
-frame_progress = 0.24831
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../CollisionShape2D")
-libraries = {
-"": SubResource("AnimationLibrary_tw8cj")
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(198.988, 114)
-rotation = -0.0121955
-shape = SubResource("RectangleShape2D_abmso")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="FiniteStateMachine" type="Node" parent="."]
+script = ExtResource("2_0s5h7")

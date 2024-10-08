@@ -1,85 +1,164 @@
-[gd_scene load_steps=13 format=3 uid="uid://bamb0wb4skvmp"]
+[gd_scene load_steps=20 format=3 uid="uid://b0v3ulskii6dn"]
 
+[ext_resource type="PackedScene" uid="uid://mcmaylbuw84i" path="res://Characters/Character.tscn" id="1_pmixr"]
 [ext_resource type="Script" path="res://Characters/Player/Player.gd" id="1_r1m8k"]
-[ext_resource type="Texture2D" uid="uid://b54hm44jxe5jv" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_qlqfi"]
+[ext_resource type="Texture2D" uid="uid://p74pf7rvq757" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_idle_anim_f0.png" id="2_uui52"]
+[ext_resource type="Texture2D" uid="uid://f7gy6ixh453n" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_idle_anim_f1.png" id="3_a1a03"]
+[ext_resource type="Texture2D" uid="uid://c0tjbsy13cqfw" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_idle_anim_f2.png" id="4_j54rr"]
+[ext_resource type="Texture2D" uid="uid://5k8ytuoxps88" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_idle_anim_f3.png" id="5_50q0b"]
+[ext_resource type="Texture2D" uid="uid://blhhqnustetwt" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_run_anim_f0.png" id="6_hbwfw"]
+[ext_resource type="Texture2D" uid="uid://csrab340ikfgh" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_run_anim_f1.png" id="7_lypgj"]
+[ext_resource type="Texture2D" uid="uid://dsgwpc2055uo4" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_run_anim_f2.png" id="8_jftie"]
+[ext_resource type="Texture2D" uid="uid://bdl4tbeo48h56" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_run_anim_f3.png" id="9_hxk7q"]
+[ext_resource type="Script" path="res://Characters/FiniteStateMachine.gd" id="11_dgsig"]
+[ext_resource type="Texture2D" uid="uid://b6qpa5nw1hl5f" path="res://Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/weapon_double_axe.png" id="11_t28gl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uuu7l"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(128, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b6gco"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(144, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s4tvl"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(160, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mcdlx"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(176, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hsacv"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(192, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vvdet"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(208, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ui2ap"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(224, 288, 16, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k846j"]
-atlas = ExtResource("2_qlqfi")
-region = Rect2(240, 288, 16, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_wc412"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_g1dqa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uuu7l")
+"texture": ExtResource("2_uui52")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b6gco")
+"texture": ExtResource("3_a1a03")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s4tvl")
+"texture": ExtResource("4_j54rr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mcdlx")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hsacv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vvdet")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ui2ap")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k846j")
+"texture": ExtResource("5_50q0b")
 }],
 "loop": true,
-"name": &"default",
-"speed": 5.0
+"name": &"idle",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_hbwfw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lypgj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jftie")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_hxk7q")
+}],
+"loop": true,
+"name": &"move",
+"speed": 9.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_32kym"]
-size = Vector2(20, 25)
+[sub_resource type="CircleShape2D" id="CircleShape2D_uoei4"]
+radius = 5.83095
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_yh3r6"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu4ak"]
+_data = {
+"idle": SubResource("Animation_yh3r6")
+}
+
+[sub_resource type="Animation" id="Animation_15ngp"]
+resource_name = "attack"
+length = 1.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.6, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-1.45037, 2.0944, 2.0944, -1.45037]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.15, 0.4, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 6.28319, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wjlsc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.45037]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2cwid"]
+_data = {
+"RESET": SubResource("Animation_wjlsc"),
+"attack": SubResource("Animation_15ngp")
+}
+
+[node name="Player" instance=ExtResource("1_pmixr")]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_r1m8k")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -5)
+sprite_frames = SubResource("SpriteFrames_g1dqa")
+animation = &"idle"
+frame_progress = 0.980752
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(58, 41)
-sprite_frames = SubResource("SpriteFrames_wc412")
-frame_progress = 0.662715
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(1, 1)
+shape = SubResource("CircleShape2D_uoei4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(58, 44.5)
-shape = SubResource("RectangleShape2D_32kym")
+[node name="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_wu4ak")
+}
+
+[node name="Axe" type="Node2D" parent="." index="3"]
+
+[node name="Node2D" type="Node2D" parent="Axe" index="0"]
+rotation = -1.45037
+
+[node name="Sprite2D" type="Sprite2D" parent="Axe/Node2D" index="0"]
+position = Vector2(-4, 0)
+texture = ExtResource("11_t28gl")
+offset = Vector2(0, -9)
+
+[node name="WeaponAnimationPlayer" type="AnimationPlayer" parent="Axe" index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_2cwid")
+}
+
+[node name="FiniteStateMachine" parent="." index="4"]
+script = ExtResource("11_dgsig")
