@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Character
 
 # Add variables that will assist with the physics of moving the character
-const FRICTION: float = 0.1
+const FRICTION: float = 0.15
 @export var acceleration: int = 20
 @export var max_speed: int = 100
 
