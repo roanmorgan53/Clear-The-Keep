@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxlc4svho8mnf"]
+
+[ext_resource type="PackedScene" uid="uid://byfq2y2g4danq" path="res://Scenes/background.tscn" id="1_2u2m8"]
+[ext_resource type="PackedScene" uid="uid://du5djhvh8si7i" path="res://Scenes/spawn_room.tscn" id="1_rv0n7"]
+[ext_resource type="PackedScene" uid="uid://b0v3ulskii6dn" path="res://Scenes/Player.tscn" id="2_4oc4n"]
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMap2" parent="." instance=ExtResource("1_2u2m8")]
+position = Vector2(1, 2)
+
+[node name="TileMap" parent="." instance=ExtResource("1_rv0n7")]
+position = Vector2(14.75, 11.125)
+
+[node name="Player" parent="." instance=ExtResource("2_4oc4n")]
+position = Vector2(12, 4)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(1.5, 1.5)
+position_smoothing_speed = 10.0
