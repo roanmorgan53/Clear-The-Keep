@@ -26,19 +26,21 @@ tile_set = ExtResource("1_bpobh")
 tile_map_data = PackedByteArray("AAD9//r/AAAJAAAAAAACAPr/AAAJAAAAAAABAAMAAAAKAAAAAAAAAAMAAAAKAAAAAAD//wMAAAAKAAAAAAD8//r/AAAKAAAAAAABAPr/AAAKAAAAAAADAPr/AAAKAAAAAAD+//r/AAAKAAAAAAD7//r/AAAIAAAAAAAEAPr/AAALAAAAAAD9/wMAAAAKAAAAAAD8/wMAAAAKAAAAAAD7/wMAAAABAAAAAAAEAAMAAAADAAAAAAACAAMAAAAKAAAAAAADAAMAAAAKAAAAAAD+/wMAAAAKAAAAAAA=")
 tile_set = ExtResource("1_bpobh")
 
+[node name="EnemyContainer" type="Node2D" parent="."]
+
+[node name="Enemy" parent="EnemyContainer" node_paths=PackedStringArray("player") instance=ExtResource("4_sunqj")]
+position = Vector2(-45.052, 9.45585)
+player = NodePath("../../Player")
+
+[node name="Enemy2" parent="EnemyContainer" instance=ExtResource("4_sunqj")]
+position = Vector2(-45.231, 9.72373)
+
+[node name="Enemy3" parent="EnemyContainer" instance=ExtResource("4_sunqj")]
+position = Vector2(-44.8775, 10.0773)
+
 [node name="Player" parent="." instance=ExtResource("2_4oc4n")]
 position = Vector2(12, 4)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(1.5, 1.5)
 position_smoothing_speed = 10.0
-
-[node name="Enemy" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_sunqj")]
-position = Vector2(-45.052, 9.45585)
-player = NodePath("../Player")
-
-[node name="Enemy2" parent="." instance=ExtResource("4_sunqj")]
-position = Vector2(-45.231, 9.72373)
-
-[node name="Enemy3" parent="." instance=ExtResource("4_sunqj")]
-position = Vector2(-44.8775, 10.0773)
