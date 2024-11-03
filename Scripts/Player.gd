@@ -1,7 +1,13 @@
+@icon("res://Assets/Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/knight_f_idle_anim_f0.png")
 extends Character
 
 @onready var axe: Node2D = get_node("Axe")
 @onready var axe_animation_player: AnimationPlayer = axe.get_node("WeaponAnimationPlayer")
+
+func _physics_process(delta: float) -> void:
+	# implement friction
+	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
+	move_and_slide()
 
 # handle which way the character is facing based on the position of the cursor
 func _process(delta: float) -> void:

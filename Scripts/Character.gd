@@ -11,11 +11,6 @@ const FRICTION: float = 0.15
 
 var mov_direction: Vector2 = Vector2.ZERO # vector initialized to zero
 
-func _physics_process(delta: float) -> void:
-	# implement friction
-	velocity = lerp(velocity, Vector2.ZERO, FRICTION)
-	move_and_slide()
-
 func move() -> void:
 	mov_direction = mov_direction.normalized()
 	velocity += mov_direction * acceleration
