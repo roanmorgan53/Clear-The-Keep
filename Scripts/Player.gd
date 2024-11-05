@@ -3,6 +3,8 @@ extends Character
 
 @onready var axe: Node2D = get_node("Axe")
 @onready var axe_animation_player: AnimationPlayer = axe.get_node("WeaponAnimationPlayer")
+@onready var sfx_footstep: AudioStreamPlayer2D = $sfx_footstep
+
 
 func _physics_process(delta: float) -> void:
 	# implement friction
@@ -38,3 +40,10 @@ func get_input() -> void:
 		mov_direction += Vector2.UP
 	if Input.is_action_pressed("right"):
 		mov_direction += Vector2.RIGHT
+		
+func move_direction(direction) -> void:
+	mov_direction += direction
+	
+
+func play_footstep() -> void:
+	sfx_footstep.play()

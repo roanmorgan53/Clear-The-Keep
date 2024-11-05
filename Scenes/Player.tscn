@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b0v3ulskii6dn"]
+[gd_scene load_steps=22 format=3 uid="uid://b0v3ulskii6dn"]
 
 [ext_resource type="PackedScene" uid="uid://mcmaylbuw84i" path="res://Scenes/Character.tscn" id="1_pmixr"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_r1m8k"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bdl4tbeo48h56" path="res://Assets/Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/dwarf_m_run_anim_f3.png" id="9_hxk7q"]
 [ext_resource type="Script" path="res://Scripts/PlayerFiniteStateMachine.gd" id="11_dgsig"]
 [ext_resource type="Texture2D" uid="uid://b6qpa5nw1hl5f" path="res://Assets/Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/frames/weapon_double_axe.png" id="11_t28gl"]
+[ext_resource type="AudioStream" uid="uid://0ud6wno0p7m6" path="res://Assets/Audio/SFX/RPG_Essentials_Free/12_Player_Movement_SFX/12_Step_wood_03.wav" id="13_6nlld"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g1dqa"]
 animations = [{
@@ -58,9 +59,30 @@ resource_name = "idle"
 length = 0.6
 loop_mode = 1
 
+[sub_resource type="Animation" id="Animation_aefyv"]
+resource_name = "move"
+length = 0.333344
+loop_mode = 1
+step = 0.111111
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.111111),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_footstep"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wu4ak"]
 _data = {
-"idle": SubResource("Animation_yh3r6")
+"idle": SubResource("Animation_yh3r6"),
+"move": SubResource("Animation_aefyv")
 }
 
 [sub_resource type="Animation" id="Animation_wjlsc"]
@@ -161,3 +183,8 @@ libraries = {
 
 [node name="FiniteStateMachine" parent="." index="4"]
 script = ExtResource("11_dgsig")
+
+[node name="sfx_footstep" type="AudioStreamPlayer2D" parent="." index="5"]
+stream = ExtResource("13_6nlld")
+volume_db = -5.0
+pitch_scale = 0.4

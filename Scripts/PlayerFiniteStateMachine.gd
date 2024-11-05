@@ -25,5 +25,7 @@ func _enter_state(_previous_state: int, new_state: int) -> void:
 	match new_state:
 		states.idle:
 			animated_sprite.play("idle")
+			animation_player.stop()
 		states.move:
 			animated_sprite.play("move")
+			animation_player.play("move")

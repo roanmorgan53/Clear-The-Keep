@@ -113,7 +113,6 @@ light_mask = 2
 shape = SubResource("CircleShape2D_l7m76")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 debug_path_custom_color = Color(1, 0.0823529, 0.0156863, 1)
 
 [node name="FiniteStateMachine" type="Node" parent="."]

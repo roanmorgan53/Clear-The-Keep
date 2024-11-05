@@ -15,6 +15,7 @@ var state: int:
 # make sure that the whole scene is loaded, then get the character and the animation player
 @onready var parent : Character = get_parent()
 @onready var animated_sprite: AnimatedSprite2D = parent.get_node("AnimatedSprite2D")
+@onready var animation_player: AnimationPlayer = parent.get_node("AnimationPlayer")
 
 # practically the "main" function here, processes the state change
 func _physics_process(delta: float) -> void:
