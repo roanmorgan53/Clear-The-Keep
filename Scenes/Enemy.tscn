@@ -87,6 +87,7 @@ radius = 8.0
 radius = 85.2878
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
 collision_mask = 7
 motion_mode = 1
