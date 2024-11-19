@@ -4,6 +4,7 @@ extends Character
 # TODO: Begin pathfinding after the player has entered their agression area
 # TODO: Make individual enemies, like zombie, ogre, and such 
 # TODO: Find a way to animate damage
+# TODO: Add an agrovation area for enemies before pathfinding begins to take place
 
 @export var player: Node2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
