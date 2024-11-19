@@ -42,5 +42,5 @@ tile_map_data = PackedByteArray("AAADAPr/AAACAAAAAAACAPr/AAACAAAAAAABAPr/AAACAAA
 tile_set = ExtResource("1_bn8ql")
 
 [node name="BG_Decor" type="TileMapLayer" parent="Background"]
-tile_map_data = PackedByteArray("AAAIAP3/AgABAAUAAAD+/wEAAgAFAAMAAAABAAAAAgAFAAMAADD+/wAAAgAEAAMAADABAAEAAgAEAAMAAAD+//3/AgAEAAMAADD+//7/AgAFAAMAAAA=")
+tile_map_data = PackedByteArray("AAAIAP3/AgABAAUAAAD+/wEAAgAFAAMAAAABAAAAAgAFAAMAADD+/wAAAgAEAAMAADABAAEAAgAEAAMAAAD+//3/AgAEAAMAADD+//7/AgAFAAMAAAABAP3/AgAFAAIAADABAP7/AgAEAAQAAAA=")
 tile_set = ExtResource("1_bn8ql")

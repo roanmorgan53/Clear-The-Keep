@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://btnpofkx08pxc"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_xx5ok"]
+[ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_lt7u4"]
 [ext_resource type="Texture2D" uid="uid://b54hm44jxe5jv" path="res://Assets/Art/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7/0x72_DungeonTilesetII_v1.7.png" id="2_b4qua"]
 [ext_resource type="Script" path="res://Scripts/EnemyFiniteStateMachine.gd" id="3_yhofl"]
 
@@ -92,7 +92,7 @@ collision_layer = 2
 collision_mask = 7
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_xx5ok")
+script = ExtResource("1_lt7u4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_cqmrs")
