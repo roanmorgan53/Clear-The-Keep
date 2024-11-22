@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://mq4phtrn3cxn"]
+
+[ext_resource type="TileSet" uid="uid://cwdd0d8p2qjua" path="res://Assets/Tilesets/world_building_tileset.tres" id="1_gth6c"]
+
+[node name="RoomTemplate" type="Node2D"]
+
+[node name="Void" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_gth6c")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_gth6c")
+
+[node name="Doors" type="TileMapLayer" parent="."]
+tile_set = ExtResource("1_gth6c")
+
+[node name="Foreground" type="Node2D" parent="."]
+
+[node name="FG_Walls" type="TileMapLayer" parent="Foreground"]
+z_index = 2
+tile_set = ExtResource("1_gth6c")
+
+[node name="FG_Toppers" type="TileMapLayer" parent="Foreground"]
+z_index = 2
+tile_set = ExtResource("1_gth6c")
+
+[node name="FG_Decor" type="TileMapLayer" parent="Foreground"]
+tile_set = ExtResource("1_gth6c")
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="BG_Walls" type="TileMapLayer" parent="Background"]
+tile_set = ExtResource("1_gth6c")
+
+[node name="BG_Toppers" type="TileMapLayer" parent="Background"]
+tile_set = ExtResource("1_gth6c")
+
+[node name="BG_Decor" type="TileMapLayer" parent="Background"]
+tile_set = ExtResource("1_gth6c")
