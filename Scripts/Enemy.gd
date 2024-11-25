@@ -4,6 +4,7 @@ extends Character
 @export var player: Node2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+signal enemy_died # Singnal that emmits for an enemy death
 var health: int = 100
 
 # Damage Properties
@@ -54,3 +55,13 @@ func damage_player() -> void:
 func start_damage_cooldown() -> void:
 	await get_tree().create_timer(damage_cooldown).timeout
 	can_damage = true
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	emit_signal("enemy_died") # Notify room manager
+	#queue_free() #TODO Needed?
+
