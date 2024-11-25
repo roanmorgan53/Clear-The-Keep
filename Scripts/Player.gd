@@ -5,12 +5,13 @@ extends Character
 @onready var axe_hitbox: Area2D = get_node("Axe/Node2D/Sprite2D/Hitbox")
 @onready var axe_animation_player: AnimationPlayer = axe.get_node("WeaponAnimationPlayer")
 @onready var sfx_footstep: AudioStreamPlayer2D = $sfx_footstep
+@export var enemy: Node2D
 
 # Health Related
 var max_health: int = 100
 var current_health: int = max_health
 
-var knockback_direction: Vector2 = Vector2.ZERO
+
 
 func _physics_process(_delta: float) -> void:
 	# Implement friction and movement
@@ -30,9 +31,6 @@ func _process(_delta: float) -> void:
 	# Set the axe's rotation to face the mouse
 	axe.rotation = mouse_direction.angle()
 
-	# Set knockback direction for the axe hitbox
-	axe_hitbox.knockback_direction = mouse_direction
-	
 	# Flip axe sprite based on the mouse direction
 	if axe.scale.y == 1 and mouse_direction.x < 0:
 		axe.scale.y = -1
@@ -63,6 +61,7 @@ func move_direction(direction) -> void:
 func play_footstep() -> void:
 	sfx_footstep.play()
 
+# Flash red when the player takes damage
 func flash_red() -> void:
 	if get_tree():  # Check if the scene tree exists
 		$AnimatedSprite2D.modulate = Color(1, 0, 0)  # Set sprite color to red
@@ -80,20 +79,26 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 	# If health is zero or below, trigger death
 	if current_health <= 0:
 		die()
-		
-		# Handle dealing damage to enemies (called during attack)
+
+# Handle dealing damage to enemies (called during attack)
 func _damage() -> void:
-	# Iterate through all bodies in the axe hitbox's collision area
-	for enemy in axe_hitbox.get_overlapping_bodies():
-		print("Enemy in hitbox: ", enemy)  # Debug line to see which bodies are detected
-		# Check if the body has a method `take_damage`
-		if enemy.has_method("take_damage"):
-			print("Damage dealt to: ", enemy)  # Debug line to confirm take_damage is called
-			# Apply damage to the body (enemy)
-			enemy.take_damage(50, axe_hitbox.knockback_direction, 300)  # Adjust damage, knockback force as needed
+	var overlapping_bodies = axe_hitbox.get_overlapping_bodies()
+	if overlapping_bodies.size() == 0:
+		print("No enemies detected in hitbox")
+		return
+	
+	# Iterate over all overlapping bodies and apply damage through Hitbox
+	for body in overlapping_bodies:
+		if body.has_method("take_damage"):
+			print("Dealing damage to: ", body.name)
+			# Call the take_damage method on the body, but now handled in Hitbox
+			body.take_damage()  # The damage is now handled inside the Hitbox script
+
+	print("No valid enemies found to damage.")
 
 
+# Death logic when health reaches 0
 func die() -> void:
 	print("You Died!")
-	# Fully restart the project
-	get_tree().reload_current_scene()
+	# Fully restart the project or call respawn logic
+	# For example: get_tree().reload_current_scene()

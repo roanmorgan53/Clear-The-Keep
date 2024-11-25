@@ -4,31 +4,29 @@ extends Character
 @export var player: Node2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
-<<<<<<< HEAD
-=======
-signal enemy_died # Singnal that emmits for an enemy death
-var health: int = 100
->>>>>>> 40d9b8e2e4cb4cec3b3401e7905ea9b9a4de9933
-
-
 # Health Related
-var max_health: int = 100
-var current_health: int = max_health
+var current_health: int = 100
 # Damage Properties
 @export var damage_amount: int = 10
-@export var knockback: int = 100  # Increased knockback force
+@export var knockback: int = 100  # Knockback force applied to player
 var damage_cooldown: float = 1.0  # Cooldown time between damages
 var can_damage: bool = true
+
+# Knockback-related variables
+var knockback_velocity: Vector2 = Vector2.ZERO  # To store the knockback velocity
 
 func _ready() -> void:
 	player = get_parent().get_parent().find_child("Player")
 	
 	if player:
-		print("Player node found and assigned")
+		print("Player targeted by Enemy")
 	else:
 		print("Player node not found; make sure it's named correctly in the scene")
 
 func _physics_process(_delta: float) -> void:
+	# Apply knockback first (if there is any)
+	velocity += knockback_velocity
+
 	# Pathfinding movement
 	if player:
 		var dir = to_local(navigation_agent_2d.get_next_path_position()).normalized()
@@ -36,8 +34,10 @@ func _physics_process(_delta: float) -> void:
 		
 		# Implement friction
 		velocity = lerp(velocity, Vector2.ZERO, FRICTION)
-		move_and_slide()
 		
+		# Apply the movement
+		move_and_slide()
+
 		# Check for collision or proximity with player
 		if global_position.distance_to(player.global_position) < 20:  # Adjust proximity range
 			damage_player()
@@ -62,7 +62,6 @@ func damage_player() -> void:
 func start_damage_cooldown() -> void:
 	await get_tree().create_timer(damage_cooldown).timeout
 	can_damage = true
-<<<<<<< HEAD
 	
 func flash_red() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 0, 0)  # Set the sprite color to red
@@ -71,27 +70,23 @@ func flash_red() -> void:
 
 # Call this function when your character takes damage
 func take_damage(dam: int, dir: Vector2, force: int) -> void:
+	print("Taking damage: ", dam)
 	current_health -= dam
-	velocity += dir * force  # Apply knockback using the direction and force passed in
-	flash_red()  # Flash red when taking damage
+	
+	# Apply knockback by modifying velocity
+	knockback_velocity = dir * force  # Set knockback force to velocity
+	print("Knockback velocity: ", knockback_velocity)
 
-	# If health is zero or below, trigger death
+	flash_red()
+	print("Current health: ", current_health)
+	
 	if current_health <= 0:
+		print("Enemy health is zero, calling die()")
 		die()
-
+	else:
+		print("Enemy still alive, health: ", current_health)
+	print("")
 
 func die() -> void:
 	queue_free()
 	print("Enemy Died!")
-=======
-
-func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		die()
-
-func die() -> void:
-	emit_signal("enemy_died") # Notify room manager
-	#queue_free() #TODO Needed?
-
->>>>>>> 40d9b8e2e4cb4cec3b3401e7905ea9b9a4de9933

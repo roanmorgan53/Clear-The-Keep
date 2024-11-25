@@ -16,5 +16,3 @@ var mov_direction: Vector2 = Vector2.ZERO # vector initialized to zero
 func move() -> void:
 	mov_direction = mov_direction.normalized()
 	velocity += mov_direction * acceleration
-
-# A function to flash red
