@@ -6,6 +6,10 @@ extends Character
 @onready var axe_animation_player: AnimationPlayer = axe.get_node("WeaponAnimationPlayer")
 @onready var sfx_footstep: AudioStreamPlayer2D = $sfx_footstep
 
+# Health Related
+var max_health: int = 100
+var current_health: int = max_health
+
 var knockback_direction: Vector2 = Vector2.ZERO
 
 func _physics_process(_delta: float) -> void:
@@ -59,13 +63,37 @@ func move_direction(direction) -> void:
 func play_footstep() -> void:
 	sfx_footstep.play()
 
-# Handle dealing damage to enemies (called during attack)
+func flash_red() -> void:
+	if get_tree():  # Check if the scene tree exists
+		$AnimatedSprite2D.modulate = Color(1, 0, 0)  # Set sprite color to red
+		await get_tree().create_timer(0.1).timeout  # Wait for 0.1 seconds
+		$AnimatedSprite2D.modulate = Color(1, 1, 1)  # Reset sprite color to normal
+	else:
+		print("Error: SceneTree is unavailable.")
+
+# Call this function when your character takes damage
+func take_damage(dam: int, dir: Vector2, force: int) -> void:
+	current_health -= dam
+	velocity += dir * force  # Apply knockback using the direction and force passed in
+	flash_red()  # Flash red when taking damage
+
+	# If health is zero or below, trigger death
+	if current_health <= 0:
+		die()
+		
+		# Handle dealing damage to enemies (called during attack)
 func _damage() -> void:
 	# Iterate through all bodies in the axe hitbox's collision area
-	for body in axe_hitbox.get_overlapping_bodies():
-		print("Body in hitbox: ", body)  # Debug line to see which bodies are detected
+	for enemy in axe_hitbox.get_overlapping_bodies():
+		print("Enemy in hitbox: ", enemy)  # Debug line to see which bodies are detected
 		# Check if the body has a method `take_damage`
-		if body.has_method("take_damage"):
-			print("Damage dealt to: ", body)  # Debug line to confirm take_damage is called
+		if enemy.has_method("take_damage"):
+			print("Damage dealt to: ", enemy)  # Debug line to confirm take_damage is called
 			# Apply damage to the body (enemy)
-			body.take_damage(10, axe_hitbox.knockback_direction, 300)  # Adjust damage, knockback force as needed
+			enemy.take_damage(50, axe_hitbox.knockback_direction, 300)  # Adjust damage, knockback force as needed
+
+
+func die() -> void:
+	print("You Died!")
+	# Fully restart the project
+	get_tree().reload_current_scene()

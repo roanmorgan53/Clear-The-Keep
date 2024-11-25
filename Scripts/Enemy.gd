@@ -4,8 +4,11 @@ extends Character
 @export var player: Node2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
-var health: int = 100
 
+
+# Health Related
+var max_health: int = 100
+var current_health: int = max_health
 # Damage Properties
 @export var damage_amount: int = 10
 @export var knockback: int = 100  # Increased knockback force
@@ -54,3 +57,23 @@ func damage_player() -> void:
 func start_damage_cooldown() -> void:
 	await get_tree().create_timer(damage_cooldown).timeout
 	can_damage = true
+	
+func flash_red() -> void:
+	$AnimatedSprite2D.modulate = Color(1, 0, 0)  # Set the sprite color to red
+	await get_tree().create_timer(0.1).timeout  # Wait 0.1 seconds
+	$AnimatedSprite2D.modulate = Color(1, 1, 1)  # Reset the sprite color to normal
+
+# Call this function when your character takes damage
+func take_damage(dam: int, dir: Vector2, force: int) -> void:
+	current_health -= dam
+	velocity += dir * force  # Apply knockback using the direction and force passed in
+	flash_red()  # Flash red when taking damage
+
+	# If health is zero or below, trigger death
+	if current_health <= 0:
+		die()
+
+
+func die() -> void:
+	queue_free()
+	print("Enemy Died!")
