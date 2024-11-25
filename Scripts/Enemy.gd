@@ -4,6 +4,11 @@ extends Character
 @export var player: Node2D
 @onready var navigation_agent_2d: NavigationAgent2D = $NavigationAgent2D
 
+<<<<<<< HEAD
+=======
+signal enemy_died # Singnal that emmits for an enemy death
+var health: int = 100
+>>>>>>> 40d9b8e2e4cb4cec3b3401e7905ea9b9a4de9933
 
 
 # Health Related
@@ -57,6 +62,7 @@ func damage_player() -> void:
 func start_damage_cooldown() -> void:
 	await get_tree().create_timer(damage_cooldown).timeout
 	can_damage = true
+<<<<<<< HEAD
 	
 func flash_red() -> void:
 	$AnimatedSprite2D.modulate = Color(1, 0, 0)  # Set the sprite color to red
@@ -77,3 +83,15 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 func die() -> void:
 	queue_free()
 	print("Enemy Died!")
+=======
+
+func take_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0:
+		die()
+
+func die() -> void:
+	emit_signal("enemy_died") # Notify room manager
+	#queue_free() #TODO Needed?
+
+>>>>>>> 40d9b8e2e4cb4cec3b3401e7905ea9b9a4de9933
