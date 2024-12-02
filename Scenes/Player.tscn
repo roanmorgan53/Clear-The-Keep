@@ -225,5 +225,4 @@ script = ExtResource("11_dgsig")
 
 [node name="sfx_footstep" type="AudioStreamPlayer2D" parent="." index="5"]
 stream = ExtResource("13_6nlld")
-volume_db = -5.0
 pitch_scale = 0.4

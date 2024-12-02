@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://6i6ayf5vmt5r" path="res://Scenes/big_zombie_room.tscn" id="9_js3pn"]
 
 [node name="Game" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-1424.0]
 
 [node name="WorldContainer" type="Node2D" parent="."]
 
@@ -23,7 +24,7 @@ tile_set = ExtResource("4_5swj4")
 position = Vector2(304, -480)
 
 [node name="TwoWayRoom" parent="WorldContainer" instance=ExtResource("5_q33gn")]
-position = Vector2(0, -232)
+position = Vector2(0, -240)
 
 [node name="Corridor Container" type="Node2D" parent="WorldContainer"]
 
@@ -85,7 +86,7 @@ position_smoothing_speed = 10.0
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_u5syf")
-volume_db = -40.0
+volume_db = -10.955
 autoplay = true
 
 [node name="BigZombieRoom" parent="." instance=ExtResource("9_js3pn")]
