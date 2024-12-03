@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfef4xw7rg2k"]
+
+[ext_resource type="Script" path="res://Scripts/you_died.gd" id="1_vd6f0"]
+[ext_resource type="Texture2D" uid="uid://bxaebyu6x47ql" path="res://Scenes/Your Soul Has Fallen Victim to the Dungeon Dwellers.png" id="2_ogggt"]
+
+[node name="YouDied!" type="CanvasLayer"]
+script = ExtResource("1_vd6f0")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 660.0
+offset_bottom = 378.0
+texture = ExtResource("2_ogggt")
+expand_mode = 2
+
+[node name="Restart" type="Button" parent="."]
+offset_left = 289.0
+offset_top = 206.0
+offset_right = 354.0
+offset_bottom = 237.0
+text = "Restart
+"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 432.0
+offset_top = 272.0
+offset_right = 474.0
+offset_bottom = 303.0
+text = "Quit
+"
+
+[connection signal="pressed" from="Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0220rufh5s11"]
+
+[ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_5lujw"]
+[ext_resource type="Texture2D" uid="uid://d3jy7ayxj1twx" path="res://Assets/Art/download.png" id="2_8yccw"]
+
+[node name="startScreen" type="CanvasLayer"]
+script = ExtResource("1_5lujw")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(0.630012, 0.357275)
+texture = ExtResource("2_8yccw")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+clip_contents = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.0
+offset_top = 72.0
+offset_right = 71.0
+offset_bottom = 108.0
+grow_horizontal = 2
+theme_override_colors/background_color = Color(0, 0, 0, 1)
+text = "Clear The Keep
+"
+
+[node name="Start" type="Button" parent="."]
+offset_left = 294.0
+offset_top = 139.0
+offset_right = 340.0
+offset_bottom = 170.0
+text = "Start"
+
+[node name="Quit" type="Button" parent="."]
+offset_left = 295.0
+offset_top = 194.0
+offset_right = 337.0
+offset_bottom = 225.0
+text = "Quit"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

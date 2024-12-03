@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bxlc4svho8mnf"]
+[gd_scene load_steps=12 format=4 uid="uid://bxlc4svho8mnf"]
 
 [ext_resource type="PackedScene" uid="uid://du5djhvh8si7i" path="res://Scenes/spawn_room.tscn" id="1_q35hd"]
 [ext_resource type="TileSet" uid="uid://bgys7fw7l1lpb" path="res://Assets/Tilesets/alternate_textures.tres" id="1_vnx4o"]
@@ -10,9 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://dc4un8w2lctsv" path="res://Scenes/end_room.tscn" id="5_3bspi"]
 [ext_resource type="PackedScene" uid="uid://cnwr5d2wpgr0j" path="res://Scenes/two_way_room.tscn" id="5_q33gn"]
 [ext_resource type="PackedScene" uid="uid://6i6ayf5vmt5r" path="res://Scenes/big_zombie_room.tscn" id="9_js3pn"]
+[ext_resource type="PackedScene" uid="uid://bkiqpseelovmv" path="res://Scenes/pause_menu.tscn" id="11_v5sbk"]
 
 [node name="Game" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-1424.0]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("11_v5sbk")]
 
 [node name="WorldContainer" type="Node2D" parent="."]
 

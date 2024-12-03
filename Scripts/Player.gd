@@ -78,6 +78,7 @@ func take_damage(dam: int, dir: Vector2, force: int) -> void:
 
 	# If health is zero or below, trigger death
 	if current_health <= 0:
+		# get_tree().paused = true;
 		die()
 
 # Handle dealing damage to enemies (called during attack)
@@ -100,5 +101,9 @@ func _damage() -> void:
 # Death logic when health reaches 0
 func die() -> void:
 	print("You Died!")
-	# Fully restart the project or call respawn logic
+	# get_tree().paused = true
+	# get_tree().change_scene_to_file("res://Scenes/you_died!.tscn")
+	# queue_free()  # Remove the player nodeget_tree().change_scene_to_file("res://Scenes/youdied.tscn")
+	# get_tree().change_scene_to_file("res://Scenes/youdied.tscn")
+	# Fully restadrt the project or call respawn logic
 	# For example: get_tree().reload_current_scene()
