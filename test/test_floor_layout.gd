@@ -1,9 +1,8 @@
 extends GutTest
 
-# Role ints match Room.Role order: 0 NORMAL, 1 SPAWN, 2 LADDER.
-const NORMAL := 0
-const SPAWN := 1
-const LADDER := 2
+const NORMAL := Room.Role.NORMAL
+const SPAWN := Room.Role.SPAWN
+const LADDER := Room.Role.LADDER
 const ROOMS := {
 	NORMAL: ["two_way", "smiley_pits", "big_zombie"],
 	SPAWN: ["spawn"],

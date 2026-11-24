@@ -3,10 +3,6 @@ extends RefCounted
 ## A Floor's layout as plain data: which grid cells hold Rooms, how they connect,
 ## and which Room goes where. Built by generate() before any nodes exist.
 
-# Match Room.Role order (NORMAL, SPAWN, LADDER).
-const NORMAL := 0
-const SPAWN := 1
-const LADDER := 2
 const DIRECTIONS: Array[Vector2i] = [Vector2i.UP, Vector2i.RIGHT, Vector2i.DOWN, Vector2i.LEFT]
 
 var cells: Array[Vector2i] = []
@@ -30,11 +26,11 @@ static func generate(seed: int, rooms_by_role: Dictionary, room_count: int) -> F
 	var candidates := layout.cells.filter(func(cell): return distances[cell] == farthest)
 	layout.ladder_cell = candidates[rng.randi_range(0, candidates.size() - 1)]
 	for cell in layout.cells:
-		var role := NORMAL
+		var role := Room.Role.NORMAL
 		if cell == layout.spawn_cell:
-			role = SPAWN
+			role = Room.Role.SPAWN
 		elif cell == layout.ladder_cell:
-			role = LADDER
+			role = Room.Role.LADDER
 		var choices: Array = rooms_by_role[role]
 		layout.room_at[cell] = choices[rng.randi_range(0, choices.size() - 1)]
 		for dir in DIRECTIONS:
