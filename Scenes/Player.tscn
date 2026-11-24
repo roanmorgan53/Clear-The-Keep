@@ -176,7 +176,7 @@ _data = {
 "attack": SubResource("Animation_15ngp")
 }
 
-[node name="Player" instance=ExtResource("1_pmixr")]
+[node name="Player" groups=["player"] instance=ExtResource("1_pmixr")]
 collision_layer = 2
 collision_mask = 7
 script = ExtResource("1_r1m8k")
