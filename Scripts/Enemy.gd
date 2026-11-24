@@ -16,12 +16,12 @@ var can_damage: bool = true
 var knockback_velocity: Vector2 = Vector2.ZERO  # To store the knockback velocity
 
 func _ready() -> void:
-	player = get_parent().get_parent().find_child("Player")
-	
+	player = get_tree().get_first_node_in_group("player")
+
 	if player:
 		print("Player targeted by Enemy")
 	else:
-		print("Player node not found; make sure it's named correctly in the scene")
+		print("Player node not found; make sure it's in the \"player\" group")
 
 func _physics_process(_delta: float) -> void:
 	# Apply knockback first (if there is any)
@@ -43,6 +43,8 @@ func _physics_process(_delta: float) -> void:
 			damage_player()
 
 func make_path() -> void:
+	if not player:
+		return
 	navigation_agent_2d.target_position = player.global_position
 
 func _on_timer_timeout() -> void:
