@@ -9,6 +9,12 @@ const ROOMS := {
 	LADDER: ["ladder"],
 }
 const SEEDS := 200
+
+
+func test_a_role_with_no_rooms_is_a_named_error():
+	var layout := FloorLayout.generate(1, {NORMAL: ["two_way"], SPAWN: ["spawn"]}, 8)
+	assert_null(layout)
+	assert_push_error("LADDER")
 const ROOM_COUNT := 8
 
 

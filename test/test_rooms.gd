@@ -91,35 +91,34 @@ func test_normal_rooms_start_their_enemies_on_floor_inside_the_room():
 			assert_eq(room.find_child("Void", true, false).get_cell_source_id(cell), -1, "%s %s not in a pit" % [path, enemy.name])
 
 
-const WALL_LAYERS := ["BG_Walls", "BG_Toppers", "FG_Walls", "FG_Toppers"]
-
-
-func _is_wall(room: Node, cell: Vector2i) -> bool:
-	return WALL_LAYERS.any(func(n): return room.find_child(n, true, false).get_cell_source_id(cell) != -1)
-
-
-func _is_open_floor(room: Node, cell: Vector2i) -> bool:
-	return room.find_child("Floor", true, false).get_cell_source_id(cell) != -1 and not _is_wall(room, cell)
-
-
-# Each socket: its cells on the footprint edge, and the wall cells either side of it.
-func _sockets() -> Dictionary:
-	var last := Room.SIZE - Vector2i.ONE
-	return {
-		"N": [[Vector2i(11, 0), Vector2i(12, 0)], [Vector2i(10, 1), Vector2i(13, 1)]],
-		"S": [[Vector2i(11, last.y), Vector2i(12, last.y)], [Vector2i(10, last.y), Vector2i(13, last.y)]],
-		"W": [[Vector2i(0, 7), Vector2i(0, 8)], [Vector2i(0, 6), Vector2i(0, 9)]],
-		"E": [[Vector2i(last.x, 7), Vector2i(last.x, 8)], [Vector2i(last.x, 6), Vector2i(last.x, 9)]],
-	}
+func _is_open_floor(room: Room, cell: Vector2i) -> bool:
+	return room.find_child("Floor", true, false).get_cell_source_id(cell) != -1 and not room.is_wall(cell)
 
 
 func test_every_room_has_four_open_door_sockets_framed_by_wall():
 	assert_eq(Room.DOOR_WIDTH, 2)
 	for path in _shaped():
 		var room = _room(path)
-		var sockets = _sockets()
-		for side in sockets:
-			for cell in sockets[side][0]:
-				assert_true(_is_open_floor(room, cell), "%s %s socket open at %s" % [path, side, cell])
-			for cell in sockets[side][1]:
-				assert_true(_is_wall(room, cell), "%s %s socket framed at %s" % [path, side, cell])
+		for dir in FloorLayout.DIRECTIONS:
+			var socket := Room.socket_cells(dir)
+			for cell in socket:
+				assert_true(_is_open_floor(room, cell), "%s %s socket open at %s" % [path, dir, cell])
+				# Along the wall, either side of the gap.
+				var along := Vector2i(abs(dir.y), abs(dir.x))
+				for frame in [cell - along, cell + along]:
+					if frame not in socket:
+						assert_true(room.is_wall(frame), "%s %s socket framed at %s" % [path, dir, frame])
+
+
+# ADR-0003: N/S gaps at x = 11..12 through the two-row wall, W/E gaps at y = 7..8.
+func test_door_sockets_sit_at_the_centre_of_each_side():
+	var expected := {
+		Vector2i.UP: [Vector2i(11, 0), Vector2i(11, 1), Vector2i(12, 0), Vector2i(12, 1)],
+		Vector2i.DOWN: [Vector2i(11, 14), Vector2i(11, 15), Vector2i(12, 14), Vector2i(12, 15)],
+		Vector2i.LEFT: [Vector2i(0, 7), Vector2i(0, 8)],
+		Vector2i.RIGHT: [Vector2i(23, 7), Vector2i(23, 8)],
+	}
+	for dir in expected:
+		var cells := Room.socket_cells(dir)
+		cells.sort()
+		assert_eq(cells, expected[dir], "socket %s" % dir)

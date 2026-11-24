@@ -14,7 +14,6 @@ tile_map_data = PackedByteArray("AAD8//z////////////8//3////////////8//7////////
 tile_set = ExtResource("2_d2rwr")
 
 [node name="Doors" type="TileMapLayer" parent="." unique_id=1850227317]
-z_index = 1
 tile_map_data = PackedByteArray("AAD+//r////////////+//v///////////////n///////////////r///////////////v///////////8AAPn///////////8AAPr///////////8AAPv///////////8BAPr///////////8BAPv///////////8=")
 tile_set = ExtResource("2_d2rwr")
 

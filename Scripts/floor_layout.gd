@@ -15,6 +15,10 @@ var sealed: Array = []
 
 static func generate(seed: int, rooms_by_role: Dictionary, room_count: int) -> FloorLayout:
 	assert(room_count >= 2, "A Floor needs room for a Spawn Room and a Ladder Room")
+	for role in Room.Role.values():
+		if rooms_by_role.get(role, []).is_empty():
+			push_error("FloorLayout: no Room with role %s to choose from" % Room.Role.find_key(role))
+			return null
 	var rng := RandomNumberGenerator.new()
 	rng.seed = seed
 	var layout := FloorLayout.new()
