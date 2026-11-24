@@ -1,44 +1,66 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0220rufh5s11"]
+[gd_scene load_steps=2 format=3 uid="uid://d0220rufh5s11"]
 
 [ext_resource type="Script" path="res://Scripts/start_screen.gd" id="1_5lujw"]
-[ext_resource type="Texture2D" uid="uid://d3jy7ayxj1twx" path="res://Assets/Art/download.png" id="2_8yccw"]
 
-[node name="startScreen" type="CanvasLayer"]
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_5lujw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1024.0
-offset_bottom = 1024.0
-scale = Vector2(0.630012, 0.357275)
-texture = ExtResource("2_8yccw")
-
-[node name="TextEdit" type="TextEdit" parent="."]
-clip_contents = false
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -63.0
-offset_top = 72.0
-offset_right = 71.0
-offset_bottom = 108.0
+[node name="Fallback" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-theme_override_colors/background_color = Color(0, 0, 0, 1)
-text = "Clear The Keep
-"
+grow_vertical = 2
+color = Color(0.133, 0.125, 0.204, 1)
 
-[node name="Start" type="Button" parent="."]
-offset_left = 294.0
-offset_top = 139.0
-offset_right = 340.0
-offset_bottom = 170.0
-text = "Start"
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Quit" type="Button" parent="."]
-offset_left = 295.0
-offset_top = 194.0
-offset_right = 337.0
-offset_bottom = 225.0
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Center/Menu"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "Clear The Keep"
+horizontal_alignment = 1
+
+[node name="Play" type="Button" parent="Center/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+focus_neighbor_bottom = NodePath("../Quit")
+text = "Play"
+
+[node name="Quit" type="Button" parent="Center/Menu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Play")
+focus_neighbor_bottom = NodePath("../Play")
 text = "Quit"
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Center/Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Center/Menu/Quit" to="." method="_on_quit_pressed"]
