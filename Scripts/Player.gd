@@ -102,7 +102,7 @@ func _damage() -> void:
 func die() -> void:
 	print("You Died!")
 	get_tree().quit()
-	# get_tree().change_scene_to_file("res://Scenes/start_screen.tscn")
+	# get_tree().change_scene_to_file("res://Scenes/title_screen.tscn")
 	# queue_free()  # Remove the player nodeget_tree().change_scene_to_file("res://Scenes/youdied.tscn")
 	# get_tree().change_scene_to_file("res://Scenes/youdied.tscn")
 	# Fully restadrt the project or call respawn logic

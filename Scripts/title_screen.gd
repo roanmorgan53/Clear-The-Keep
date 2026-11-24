@@ -1,15 +1,26 @@
+@tool
 extends Control
 
 ## Full-screen background image. Leave empty for the plain dark fill.
 ## The later in-world title scene replaces the Background layer as a whole.
-@export var background: Texture2D
+@export var background: Texture2D:
+	set(value):
+		background = value
+		if is_node_ready():
+			$Background.texture = value
 ## Scene the Play button opens to start a new Run.
 @export_file("*.tscn") var game_scene := "res://Scenes/game.tscn"
 
 
+static func quit_available(is_web: bool) -> bool:
+	return not is_web
+
+
 func _ready() -> void:
 	$Background.texture = background
-	$Center/Menu/Quit.visible = not OS.has_feature("web")
+	if Engine.is_editor_hint():
+		return
+	$Center/Menu/Quit.visible = quit_available(OS.has_feature("web"))
 	$Center/Menu/Play.grab_focus()
 
 
